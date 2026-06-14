@@ -1,0 +1,30 @@
+[
+  {
+    "contract_id": "C-1001",
+    "period": "2026-06",
+    "actual_uptime_pct": 99.8,
+    "credit_issued": 0,
+    "note": "0.1% below 99.9 target; no credit issued"
+  },
+  {
+    "contract_id": "C-1003",
+    "period": "2026-06",
+    "actual_uptime_pct": 98.7,
+    "credit_issued": 0,
+    "note": "0.8% below 99.5 target; no credit issued"
+  },
+  {
+    "contract_id": "C-1002",
+    "period": "2026-06",
+    "actual_uptime_pct": 99.95,
+    "credit_issued": 0,
+    "note": "Above target; no credit owed"
+  },
+  {
+    "contract_id": "C-1004",
+    "period": "2026-06",
+    "actual_uptime_pct": 99.95,
+    "credit_issued": 0,
+    "note": "Above target; no credit owed"
+  }
+]

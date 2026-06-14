@@ -1,0 +1,58 @@
+[
+  {
+    "contract_id": "C-1001",
+    "customer": "Contoso Ltd",
+    "base_monthly_price": 10000,
+    "currency": "USD",
+    "start_date": "2024-06-01",
+    "annual_escalator_pct": 4.0,
+    "escalation_clause_ref": "Clause 4.2 - Annual CPI Escalation",
+    "auto_renew": true,
+    "renewal_date": "2026-06-01",
+    "sla_uptime_target_pct": 99.9,
+    "sla_credit_terms": "5% of monthly fee per 0.1% below target",
+    "sla_credit_clause_ref": "Clause 7.3 - Service Level Credits"
+  },
+  {
+    "contract_id": "C-1002",
+    "customer": "Fabrikam Inc",
+    "base_monthly_price": 5000,
+    "currency": "USD",
+    "start_date": "2025-01-01",
+    "annual_escalator_pct": 3.0,
+    "escalation_clause_ref": "Clause 5.1 - Price Adjustment",
+    "auto_renew": false,
+    "renewal_date": "2026-01-01",
+    "sla_uptime_target_pct": 99.5,
+    "sla_credit_terms": "10% of monthly fee per 0.5% below target",
+    "sla_credit_clause_ref": "Clause 8.1 - Availability Credits"
+  },
+  {
+    "contract_id": "C-1003",
+    "customer": "Northwind Traders",
+    "base_monthly_price": 20000,
+    "currency": "USD",
+    "start_date": "2025-09-01",
+    "annual_escalator_pct": 0.0,
+    "escalation_clause_ref": null,
+    "auto_renew": true,
+    "renewal_date": "2026-09-01",
+    "sla_uptime_target_pct": 99.5,
+    "sla_credit_terms": "10% of monthly fee per 0.5% below target",
+    "sla_credit_clause_ref": "Clause 6.2 - Uptime Guarantee"
+  },
+  {
+    "contract_id": "C-1004",
+    "customer": "Adventure Works",
+    "base_monthly_price": 8000,
+    "currency": "USD",
+    "start_date": "2023-03-01",
+    "annual_escalator_pct": 5.0,
+    "escalation_clause_ref": "Clause 4.2 - Annual CPI Escalation",
+    "auto_renew": true,
+    "renewal_date": "2026-03-01",
+    "sla_uptime_target_pct": 99.9,
+    "sla_credit_terms": "5% of monthly fee per 0.1% below target",
+    "sla_credit_clause_ref": "Clause 7.3 - Service Level Credits"
+  }
+]

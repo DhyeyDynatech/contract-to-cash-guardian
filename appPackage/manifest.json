@@ -1,0 +1,62 @@
+{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.21/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.21",
+  "version": "1.0.0",
+  "id": "${{TEAMS_APP_ID}}",
+  "developer": {
+    "name": "Contract-to-Cash Guardian Team",
+    "websiteUrl": "https://www.dynatechconsultancy.com",
+    "privacyUrl": "https://www.dynatechconsultancy.com",
+    "termsOfUseUrl": "https://www.dynatechconsultancy.com"
+  },
+  "icons": {
+    "color": "color.png",
+    "outline": "outline.png"
+  },
+  "name": {
+    "short": "Contract-to-Cash Guardian",
+    "full": "Contract-to-Cash Guardian — Revenue Integrity Agent"
+  },
+  "description": {
+    "short": "Find revenue leakage with cited, approval-gated corrections.",
+    "full": "Contract-to-Cash Guardian is an enterprise revenue-integrity agent for Microsoft 365 Copilot. It reconciles what contracts promised against what was billed and delivered, surfaces dollar leakage with cited contract clauses, and drafts corrections for human approval. Built for the Agents League Hackathon (Enterprise Agents)."
+  },
+  "accentColor": "#0F4B96",
+  "bots": [
+    {
+      "botId": "${{BOT_ID}}",
+      "scopes": ["personal"],
+      "supportsFiles": false,
+      "isNotificationOnly": false,
+      "commandLists": [
+        {
+          "scopes": ["personal"],
+          "commands": [
+            {
+              "title": "Find revenue leakage",
+              "description": "Find revenue leakage across the contract portfolio and show the total at risk."
+            },
+            {
+              "title": "Explain a finding",
+              "description": "Explain a specific finding and cite the contract clause."
+            },
+            {
+              "title": "Draft a correction",
+              "description": "Draft a correction for a finding and wait for my approval."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "copilotAgents": {
+    "customEngineAgents": [
+      {
+        "type": "bot",
+        "id": "${{BOT_ID}}"
+      }
+    ]
+  },
+  "permissions": ["identity", "messageTeamMembers"],
+  "validDomains": ["${{BOT_DOMAIN}}"]
+}

@@ -1,0 +1,41 @@
+# Secrets - NEVER commit (hackathon rule: no credentials/tokens/tenant ids)
+.env
+.env.*
+!.env.example
+.localConfigs
+.localConfigs.*
+appsettings.json
+appsettings.*.json
+*.user
+**/.secrets/
+config/secrets.*
+*.pem
+*.pfx
+*.key
+
+# Agents Toolkit generated env state — contains tenant IDs + SECRET_BOT_PASSWORD.
+# Belt-and-braces: ignore the whole env/ dir regardless of the .env.* rule above.
+env/
+
+# Local tooling logs / runtime junk (not part of the submission)
+devTools/
+*.log
+
+# Build artifacts
+appPackage/build/
+appPackage/build/**
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+*.egg-info/
+.pytest_cache/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

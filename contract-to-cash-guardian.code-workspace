@@ -1,0 +1,14 @@
+{
+  "folders": [{ "path": "." }],
+  "settings": {
+    "python.analysis.extraPaths": ["${workspaceFolder}/src"]
+  },
+  "extensions": {
+    "recommendations": [
+      "teamsdevapp.ms-teams-vscode-extension",
+      "ms-python.python",
+      "ms-python.vscode-pylance",
+      "github.copilot"
+    ]
+  }
+}

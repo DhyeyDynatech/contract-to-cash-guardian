@@ -1,0 +1,32 @@
+# Custom engine agent (bot) hosted in Microsoft 365 Copilot Chat
+microsoft-agents-hosting-aiohttp>=1.0.0
+microsoft-agents-authentication-msal>=1.0.0
+python-dotenv>=1.0.0
+
+# Claude served via Azure AI Foundry (Anthropic-compatible endpoint)
+anthropic>=0.49.0
+
+# Foundry IQ — grounded, cited rulebook retrieval (Azure AI Search backing)
+azure-search-documents>=11.5.0
+
+# Work IQ (live) — Microsoft Graph token for emailed side-commitments
+msal>=1.31.0
+
+# Fabric IQ (gated / optional) — query the OneLake Lakehouse SQL analytics endpoint.
+# Left out of the default install so the proven deploy stays lean; it also needs the
+# system "ODBC Driver 18 for SQL Server". Install ONLY when connecting a Fabric capacity:
+#   pyodbc>=5.1.0
+# (msal above is reused for the service-principal token.)
+
+# MCP server (optional external read/write tools - bonus)
+mcp[cli]>=1.2.0
+
+# Pro-code Azure AI Foundry agent path (optional - src/foundry_agent.py)
+azure-ai-projects>=1.0.0
+azure-identity>=1.17.0
+
+# OAuth / token validation helpers (optional)
+PyJWT>=2.8.0
+requests>=2.31.0
+
+# The reconciler itself is pure standard-library Python (no deps).
