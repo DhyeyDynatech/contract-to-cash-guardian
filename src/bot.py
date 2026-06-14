@@ -92,26 +92,42 @@ async def on_message(context: TurnContext, _: TurnState):
     if not user_text:
         return True
 
-    # Show a typing indicator — the multi-IQ tool chain can take 20-40s, and
-    # without this Teams renders an empty placeholder bubble before the answer.
-    try:
-        from microsoft_agents.activity import Activity, ActivityTypes
-
-        await context.send_activity(Activity(type=ActivityTypes.typing))
-    except Exception:  # noqa: BLE001 - typing is best-effort
-        pass
-
     convo_id = context.activity.conversation.id
     history = _HISTORY.get(convo_id, [])
 
+    # Stream the reply. The multi-IQ tool chain can take longer than Copilot's
+    # ~45s no-response timeout, so we run the (blocking) agent in a background
+    # thread and keep the stream alive with periodic progress updates until it
+    # finishes — letting it run as long as it needs instead of being cut off
+    # with a "timeout" error. On channels that don't support streaming the
+    # informative updates are no-ops and only the final message is delivered
+    # (graceful fallback to a single reply — no regression).
+    sr = context.streaming_response
+    agent_task = asyncio.create_task(asyncio.to_thread(run_agent, user_text, history))
+
+    progress_steps = (
+        "Reconciling contracts, invoices, and SLA data…",
+        "Retrieving the exact contract clauses (Foundry IQ)…",
+        "Checking Microsoft 365 for side-agreements (Work IQ)…",
+        "Finalizing the report…",
+    )
+    sr.queue_informative_update(progress_steps[0])
+    step = 0
+    while True:
+        done, _pending = await asyncio.wait({agent_task}, timeout=10)
+        if done:
+            break
+        step = min(step + 1, len(progress_steps) - 1)
+        sr.queue_informative_update(progress_steps[step])
+
     try:
-        # run_agent makes blocking Anthropic calls — run off the event loop.
-        reply, updated = await asyncio.to_thread(run_agent, user_text, history)
+        reply, updated = agent_task.result()
         _HISTORY[convo_id] = updated
     except Exception as error:  # noqa: BLE001 - surface a friendly message
         reply = f"Sorry — I hit an error reaching the model: {error}"
 
-    await context.send_activity(reply)
+    sr.queue_text_chunk(reply)
+    await sr.end_stream()
     return True
 
 

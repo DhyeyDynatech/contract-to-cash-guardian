@@ -21,6 +21,14 @@ env/
 devTools/
 *.log
 
+# Demo video / large media — upload to YouTube/Vimeo and link it; never commit.
+# (GitHub rejects files over 100 MB, and binaries bloat the repo permanently.)
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.webm
+
 # Build artifacts
 appPackage/build/
 appPackage/build/**
