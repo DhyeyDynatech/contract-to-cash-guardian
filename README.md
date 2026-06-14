@@ -4,6 +4,8 @@
 
 **Agents League Hackathon — Enterprise Agents track** · Custom Engine Agent · Claude via **Azure AI Foundry** · grounded by **three Microsoft IQ layers**
 
+### 🎥 [Watch the 2-minute demo →](https://vimeo.com/1201235695)
+
 ---
 
 ## 🔴 The problem
